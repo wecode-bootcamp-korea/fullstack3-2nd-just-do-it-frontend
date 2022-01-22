@@ -1,0 +1,69 @@
+{
+  "message": "성공",
+  "data": {
+    "style_code": "DAA-0001",
+    "name": "나이키 에어 디올 로우",
+    "category": "snkrs",
+    "color": "은색",
+    "hex": "#C4C4C4",
+    "gender": "남성",
+    "price": "2700000",
+    "is_open": 0,
+    "img": [
+      {
+        "name": "/Images/SNKRS/1/1.png",
+        "is_main": 1
+      },
+      {
+        "name": "/Images/SNKRS/1/2.png",
+        "is_main": 0
+      },
+      {
+        "name": "/Images/SNKRS/1/3.png",
+        "is_main": 0
+      },
+      {
+        "name": "/Images/SNKRS/1/4.png",
+        "is_main": 0
+      }
+    ],
+    "info": [
+      {
+        "size": "220",
+        "quantity": 80
+      },
+      {
+        "size": "230",
+        "quantity": 80
+      },
+      {
+        "size": "240",
+        "quantity": 80
+      },
+      {
+        "size": "250",
+        "quantity": 80
+      },
+      {
+        "size": "260",
+        "quantity": 80
+      },
+      {
+        "size": "270",
+        "quantity": 80
+      },
+      {
+        "size": "280",
+        "quantity": 80
+      },
+      {
+        "size": "290",
+        "quantity": 80
+      },
+      {
+        "size": "300",
+        "quantity": 80
+      }
+    ]
+  }
+}
