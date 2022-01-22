@@ -6,6 +6,7 @@ import Detail from './pages/Detail/Detail';
 import List from './pages/List/List';
 import SignUp from './pages/Login/SignUp';
 import SnkrsList from './pages/SNKRS/SnkrsList';
+import SNKRSDetail from './pages/SNKRSDetail/SNKRSDetail';
 
 function Router() {
   return (
@@ -19,6 +20,7 @@ function Router() {
         <Route path="/snkrs" element={<SnkrsList />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/list" element={<List />} />
+        <Route path="/snkrsdetail" element={<SNKRSDetail />} />
       </Routes>
     </BrowserRouter>
   );
