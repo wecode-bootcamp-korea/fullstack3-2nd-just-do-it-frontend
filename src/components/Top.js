@@ -1,25 +1,32 @@
 import { SiJordan } from 'react-icons/si';
 import { GiConverseShoe } from 'react-icons/gi';
 import styled from 'styled-components';
+import { useState } from 'react';
+import SignIn from '../pages/Login/SignIn';
 
 function Top() {
+  const [modal, setModal] = useState(false);
+
   return (
-    <TopWarppeer>
-      <TopLeft>
-        <SiJordan className="icon" />
-        <GiConverseShoe className="icon" />
-      </TopLeft>
-      <TopRight>
-        <li>고객센터</li>
-        <li>멤버 가입</li>
-        <li>프리미엄 멤버 가입</li>
-        <li>로그인</li>
-      </TopRight>
-    </TopWarppeer>
+    <>
+      {modal && <SignIn setModal={setModal} />}
+      <TopWarpper>
+        <TopLeft>
+          <SiJordan className="icon" />
+          <GiConverseShoe className="icon" />
+        </TopLeft>
+        <TopRight>
+          <li>고객센터</li>
+          <li>멤버 가입</li>
+          <li>프리미엄 멤버 가입</li>
+          <li onClick={() => setModal(true)}>로그인</li>
+        </TopRight>
+      </TopWarpper>
+    </>
   );
 }
 
-const TopWarppeer = styled.div`
+const TopWarpper = styled.div`
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
@@ -27,8 +34,6 @@ const TopWarppeer = styled.div`
   background-color: gainsboro;
   padding: 0.5vh 3vw;
   font-family: ${props => props.theme.fontContent};
-  /* position: sticky; */
-  /* top: 0; */
 
   @media screen and (max-width: 640px) {
     display: none;
