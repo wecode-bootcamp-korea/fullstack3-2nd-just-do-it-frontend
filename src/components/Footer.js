@@ -51,7 +51,7 @@ function Footer() {
           <div className="right">개인정보처리방침</div>
         </div>
       </FooterBody>
-      <FooterFooter>
+      <FooterBottom>
         <div className="footerWrapper">
           <div className="firstRow">
             (유)나이키코리아 대표 Jamie Lee | 서울 강남구 테헤란로 152 강남 파이낸스센터 30층
@@ -76,7 +76,7 @@ function Footer() {
             온라인디지털콘텐츠사업발전법에 의한<span>콘텐츠보호안내 자세히보기</span>
           </div>
         </div>
-      </FooterFooter>
+      </FooterBottom>
     </FooterWrapper>
   );
 }
@@ -90,6 +90,9 @@ const FooterWrapper = styled.div`
   background-color: black;
   color: gray;
   font-size: 11px;
+  /* position: fixed; */
+  /* bottom: 0; */
+  width: 100%;
 `;
 
 const FooterTop = styled.div`
@@ -169,7 +172,7 @@ const FooterBody = styled.div`
     padding: 10px;
   }
 `;
-const FooterFooter = styled.div`
+const FooterBottom = styled.div`
   display: flex;
   justify-content: center;
   /* width: 900px; */

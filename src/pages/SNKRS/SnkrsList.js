@@ -224,6 +224,7 @@ const ListBody = styled.div`
   a :hover {
     opacity: 0.8;
   }
+
   @media screen and (max-width: 640px) {
     .listCard {
       grid-template-columns: 1fr;

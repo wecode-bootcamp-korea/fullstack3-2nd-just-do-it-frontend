@@ -89,9 +89,11 @@ function ManModal({ setMenModalOn }) {
 }
 
 const Modal = styled.div`
+  font-family: ${props => props.theme.fontContent};
+
   .modal {
     position: fixed;
-    top: 50px;
+    top: 80px;
     right: 0;
     bottom: 0;
     left: 0;
@@ -135,7 +137,7 @@ const Modal = styled.div`
     }
 
     to {
-      top: 50px;
+      top: 80px;
     }
   }
 `;

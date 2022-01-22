@@ -27,6 +27,8 @@ const TopWarppeer = styled.div`
   background-color: gainsboro;
   padding: 0.5vh 3vw;
   font-family: ${props => props.theme.fontContent};
+  /* position: sticky; */
+  /* top: 0; */
 
   @media screen and (max-width: 640px) {
     display: none;

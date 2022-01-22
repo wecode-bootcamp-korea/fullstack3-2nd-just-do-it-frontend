@@ -2,11 +2,23 @@ import styled from 'styled-components';
 import { SiNike } from 'react-icons/si';
 import { FiSearch, FiHeart, FiShoppingBag, FiMenu } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import MenModal from './Modals/MenModal';
 import WomenModal from './Modals/WomenModal';
 import KidModal from './Modals/KidModal';
 import SaleModal from './Modals/SaleModal';
+
+const throttle = (callback, waitTime) => {
+  let timeId = null;
+  return element => {
+    if (timeId) {
+      return (timeId = setTimeout(() => {
+        callback.call(this, element);
+        timeId = null;
+      }, waitTime));
+    }
+  };
+};
 
 function TopNav() {
   const [menModalOn, setMenModalOn] = useState(false);
@@ -15,57 +27,80 @@ function TopNav() {
   const [saleModalOn, setSaleModalOn] = useState(false);
 
   // useEffect({}, [menModalOn, womenModalOn, kidModalOn, saleModalOn]);
-
   const [hide, setHide] = useState(false);
   const [pageY, setPageY] = useState(0);
+  const documentRef = useRef(document);
+
+  const handleScroll = () => {
+    const { pageYOffset } = window;
+    const deltaY = pageYOffset - pageY;
+    const hide = pageYOffset !== 0 && deltaY >= 0;
+    setHide(hide);
+    setPageY(pageYOffset);
+  };
+  const throttleScroll = throttle(handleScroll, 50);
+
+  useEffect(() => {
+    documentRef.current.addEventListener('scroll', throttleScroll);
+    return () => documentRef.current.removeEventListener('scroll', throttleScroll);
+  }, [pageY]);
 
   return (
     <>
+      {console.log(hide)}
+      {console.log(pageY)}
       {menModalOn ? <MenModal setMenModalOn={setMenModalOn} /> : null}
       {womenModalOn ? <WomenModal setWomenModalOn={setWomenModalOn} /> : null}
       {kidModalOn ? <KidModal setKidModalOn={setKidModalOn} /> : null}
       {saleModalOn ? <SaleModal setSaleModalOn={setSaleModalOn} /> : null}
-      <TopNavWrapper>
-        <NavLeft>
-          <Link to="/">
-            <SiNike />
-          </Link>
-        </NavLeft>
-        <NavCenter>
-          <div className="mainMenu">
-            <Link to="/snkrs">
-              <div>SNKRS</div>
+      <TopContainer>
+        <TopNavWrapper className={hide && 'hide'}>
+          <NavLeft>
+            <Link to="/">
+              <SiNike />
             </Link>
-            <div onMouseEnter={() => setMenModalOn(true)}>MEN</div>
-            <div onMouseOver={() => setWomenModalOn(true)}>WOMEN</div>
-            <div onMouseOver={() => setKidModalOn(true)}>KID</div>
-            <div onMouseOver={() => setSaleModalOn(true)}>SALES</div>
-          </div>
-        </NavCenter>
-        <NavRight>
-          <span>
-            <input className="search" placeholder="검색" />
-          </span>
-          <button id="searchIcon">
-            <FiSearch className="icon" />
-          </button>
-          <button>
-            <FiHeart className="icon" id="likeBtn" />
-          </button>
-          <button>
-            <FiShoppingBag className="icon" id="iconBag" />
-          </button>
-          <button className="iconMobile">
-            <FiMenu />
-          </button>
-          <button className="iconMobile">
-            <FiSearch />
-          </button>
-        </NavRight>
-      </TopNavWrapper>
+          </NavLeft>
+          <NavCenter>
+            <div className="mainMenu">
+              <Link to="/snkrs">
+                <div>SNKRS</div>
+              </Link>
+              <div onMouseEnter={() => setMenModalOn(true)}>MEN</div>
+              <div onMouseOver={() => setWomenModalOn(true)}>WOMEN</div>
+              <div onMouseOver={() => setKidModalOn(true)}>KID</div>
+              <div onMouseOver={() => setSaleModalOn(true)}>SALES</div>
+            </div>
+          </NavCenter>
+          <NavRight>
+            <span>
+              <input className="search" placeholder="검색" />
+            </span>
+            <button id="searchIcon">
+              <FiSearch className="icon" />
+            </button>
+            <button>
+              <FiHeart className="icon" id="likeBtn" />
+            </button>
+            <button>
+              <FiShoppingBag className="icon" id="iconBag" />
+            </button>
+            <button className="iconMobile">
+              <FiMenu />
+            </button>
+            <button className="iconMobile">
+              <FiSearch />
+            </button>
+          </NavRight>
+        </TopNavWrapper>
+      </TopContainer>
     </>
   );
 }
+const TopContainer = styled.div`
+  position: relative;
+  width: 100%;
+  /* height: 80px; */
+`;
 
 const TopNavWrapper = styled.div`
   box-sizing: border-box;
@@ -73,11 +108,19 @@ const TopNavWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0 3vw;
-  position: fixed;
+  position: sticky;
+  /* position: fixed; */
+  /* top: 40px; */
+  left: 0;
+  height: 80px;
   width: 100%;
   font-family: ${props => props.theme.fontContent};
   z-index: 100;
-  transition: top 0.2s ease-in-out;
+  background-color: white;
+
+  @media screen and (max-width: 640px) {
+    top: 0;
+  }
 `;
 
 const NavLeft = styled.div`
