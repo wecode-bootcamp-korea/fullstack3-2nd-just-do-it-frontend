@@ -1,0 +1,37 @@
+{
+  "message": "성공",
+  "data": [
+    {
+      "style_code": "DAA-0001",
+      "name": "이준혁",
+      "email": "clzlsqkq@naver.com",
+      "size": "220",
+      "is_winner": 1,
+      "count": 1
+    },
+    {
+      "style_code": "DAA-0001",
+      "name": "이준혁",
+      "email": "clzlsqkq@naver.com",
+      "size": "220",
+      "is_winner": 0,
+      "count": 1
+    },
+    {
+      "style_code": "DAA-0001",
+      "name": "이준혁",
+      "email": "clzlsqkq@naver.com",
+      "size": "220",
+      "is_winner": 0,
+      "count": 1
+    },
+    {
+      "style_code": "DAA-0001",
+      "name": "이준혁",
+      "email": "clzlsqkq@naver.com",
+      "size": "220",
+      "is_winner": 0,
+      "count": 1
+    }
+  ]
+}
