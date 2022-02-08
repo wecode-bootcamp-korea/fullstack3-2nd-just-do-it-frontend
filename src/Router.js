@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Detail from './pages/Detail/Detail';
+import Detail from './pages/ProductDetail/ProductDetail';
 import List from './pages/List/List';
 import SignUp from './pages/Login/SignUp';
 import SnkrsList from './pages/SNKRSList/SnkrsList';
