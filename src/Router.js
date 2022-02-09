@@ -1,11 +1,12 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Detail from './pages/Detail/Detail';
-import List from './pages/List/List';
-import SignUp from './pages/Login/SignUp';
+import List from './pages/ProductList/List';
+import SignUp from './pages/Users/SignUp';
 import SnkrsList from './pages/SNKRSList/SnkrsList';
 import SNKRSDetail from './pages/SNKRSDetail/SNKRSDetail';
-import Auth from './pages/Login/Auth';
-import Login from './pages/Login/Login';
+import Auth from './pages/Users/Auth';
+import NewAuth from './pages/Users/NewAuth';
+import Login from './pages/Users/Login';
 import Main from './pages/Main/Main';
 import Cart from './pages/Cart/Cart';
 
@@ -18,7 +19,8 @@ function Router() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/list" element={<List />} />
         <Route path="/snkrs/detail/:styleCode" element={<SNKRSDetail />} />
-        <Route path="/oauth" element={<Auth />} />
+        {/* <Route path="/oauth" element={<Auth />} /> */}
+        <Route path="/oauth" element={<NewAuth />} />
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Main />} />
         <Route path="/cart" element={<Cart />} />

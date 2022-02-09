@@ -1,7 +1,7 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import { AiOutlineControl } from 'react-icons/ai';
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md';
-import { useState } from 'react';
 
 function ListTop({ filter, setFilter, query, sortMethod, setSortMethod }) {
   const [upDown, setUpDown] = useState(false);
@@ -37,11 +37,6 @@ function ListTop({ filter, setFilter, query, sortMethod, setSortMethod }) {
     setFilterModal(prev => !prev);
   };
 
-  const makeSort = (id, name) => {
-    setSortMethod(id);
-    setSortName(name);
-  };
-
   return (
     <TopWrapper>
       <div className="topLeft">
@@ -68,22 +63,31 @@ function ListTop({ filter, setFilter, query, sortMethod, setSortMethod }) {
               <MdKeyboardArrowDown className="icon" />
             )}
           </div>
-          {filterModal ? (
-            <FilterModal>
-              {sort.map((e, i) => {
-                return (
-                  <div className="sortWrapper" key={e.id} onClick={() => makeSort(e.id, e.name)}>
-                    <div>{e.name}</div>
-                  </div>
-                );
-              })}
-            </FilterModal>
-          ) : null}
+          {filterModal && <FilterModal setSortMethod={setSortMethod} setSortName={setSortName} />}
         </div>
       </div>
     </TopWrapper>
   );
 }
+
+const FilterModal = ({ setSortMethod, setSortName }) => {
+  const makeSort = (id, name) => {
+    setSortMethod(id);
+    setSortName(name);
+  };
+
+  return (
+    <Modal>
+      {sort.map((e, i) => {
+        return (
+          <div className="sortWrapper" key={e.id} onClick={() => makeSort(e.id, e.name)}>
+            <div>{e.name}</div>
+          </div>
+        );
+      })}
+    </Modal>
+  );
+};
 
 const TopWrapper = styled.div`
   display: flex;
@@ -122,7 +126,7 @@ const TopWrapper = styled.div`
   }
 `;
 
-const FilterModal = styled.div`
+const Modal = styled.div`
   position: absolute;
   background-color: #fff;
   width: 100px;

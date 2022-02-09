@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 function WomenModal({ setWomenModalOn }) {
@@ -25,13 +26,13 @@ function WomenModal({ setWomenModalOn }) {
             </ul>
           </ul>
           <ul className="modalCol">
-            <a href="/list?genderId=2&categoryId=1">
+            <Link to="/list?genderId=2&categoryId=1">
               <li className="cateTitle">신발</li>
-            </a>
+            </Link>
             <ul className="cateList">
-              <a href="/list?genderId=2&categoryId=1">
+              <Link to="/list?genderId=2&categoryId=1">
                 <li>신발 전체</li>
-              </a>
+              </Link>
               <li>라이프스타일</li>
               <li>러닝</li>
               <li>트레이닝 & 짐</li>
@@ -44,13 +45,13 @@ function WomenModal({ setWomenModalOn }) {
             </ul>
           </ul>
           <ul className="modalCol">
-            <a href="/list?genderId=2&categoryId=2">
+            <Link to="/list?genderId=2&categoryId=2">
               <li className="cateTitle">의류</li>
-            </a>
+            </Link>
             <ul className="cateList">
-              <a href="/list?genderId=2&categoryId=2">
+              <Link to="/list?genderId=2&categoryId=2">
                 <li>의류 전체</li>
-              </a>
+              </Link>
               <li>스포츠 브라</li>
               <li>타이츠 & 레깅스</li>
               <li>팬츠 & 숏 팬츠</li>
@@ -63,9 +64,9 @@ function WomenModal({ setWomenModalOn }) {
               <li>셋업</li>
             </ul>
             <br />
-            <a href="/list?genderId=2&categoryId=3">
+            <Link to="/list?genderId=2&categoryId=3">
               <li className="cateTitle">용품</li>
-            </a>
+            </Link>
             <ul className="cateList">
               <li>모자 & 헤드밴드</li>
               <li>가방</li>

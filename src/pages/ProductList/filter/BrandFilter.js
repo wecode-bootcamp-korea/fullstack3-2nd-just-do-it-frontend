@@ -9,14 +9,25 @@ function BrandFilter() {
     navigate({ pathname: '/list', search: `${location.search}&subBrandName="${name}"` });
   };
 
+  const removeFilter = name => {
+    const targetURL = location.search;
+    const splitArr = targetURL.split('&');
+    const newURL = [];
+
+    const result = splitArr.filter(e => e.includes(name));
+
+    console.log(result);
+  };
+
   return (
     <FilterWrapper>
+      {removeFilter()}
       <Title>브랜드</Title>
       <Content>
         {brand.map((e, i) => {
           return (
             <div className="box" key={i}>
-              <input type="checkbox" id={`b${e.id}`} onClick={() => addFilter(e.name)} />
+              <input type="checkbox" id={`b${e.id}`} onClick={() => removeFilter(e.name)} />
               <label htmlFor={`b${e.id}`}>{e.name}</label>
             </div>
           );

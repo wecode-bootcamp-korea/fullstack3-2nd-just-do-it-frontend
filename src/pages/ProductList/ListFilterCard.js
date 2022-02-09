@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import ColorFilter from './filter/ColorFilter';
 import SizeFilter from './filter/SizeFilter';
+import ColorFilter from './filter/ColorFilter';
 import BrandFilter from './filter/BrandFilter';
 import IconFilter from './filter/IconFilter';
 import SubClothesFilter from './filter/SubClothesFilter';

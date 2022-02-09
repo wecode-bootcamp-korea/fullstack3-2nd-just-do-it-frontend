@@ -1,6 +1,7 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import { IoIosLock } from 'react-icons/io';
-import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function ListCard({
   index,
@@ -24,30 +25,15 @@ function ListCard({
     <ListCardWrapper key={index}>
       <div className="cardWrapper">
         {!isMember ? (
-          <a href={`/product/detail/${styleCode}`}>
-            <div className="imgWrapper">
-              <img alt={productName} src={imgUrl} />
-            </div>
-          </a>
+          <NormalProducts styleCode={styleCode} productName={productName} imgUrl={imgUrl} />
         ) : (
-          <div
-            className="imgWrapperForMember"
-            onMouseEnter={() => setMouse(true)}
-            onMouseLeave={() => setMouse(false)}
-          >
-            <a href={`/product/detail/${styleCode}`}>
-              <div className="white" style={mouse ? { display: 'block' } : { display: 'none' }}>
-                <div className="comment">
-                  나이키 멤버만
-                  <br /> 구매가능한 제품입니다
-                </div>
-              </div>
-              <button>
-                <IoIosLock className="icon" />
-              </button>
-              <img alt={productName} src={imgUrl} />
-            </a>
-          </div>
+          <MemberProducts
+            mouse={mouse}
+            setMouse={setMouse}
+            styleCode={styleCode}
+            productName={productName}
+            imgUrl={imgUrl}
+          />
         )}
         <div className="detailWrapper">
           <div className="detailLeft">
@@ -58,17 +44,9 @@ function ListCard({
             </div>
           </div>
           {!salePrice ? (
-            <div className="detailRight">
-              <div>{parseInt(normalPrice).toLocaleString()} 원</div>
-            </div>
+            <Price normalPrice={normalPrice} />
           ) : (
-            <div className="detailRight">
-              <div className="row1">
-                <span className="saleRate">{saleRate}% </span>
-                {parseInt(salePrice).toLocaleString()} 원
-              </div>
-              <div className="row2">{parseInt(normalPrice).toLocaleString()} 원</div>
-            </div>
+            <SaledPrice saleRate={saleRate} salePrice={salePrice} normalPrice={normalPrice} />
           )}
         </div>
         <div className="colors">1 컬러</div>
@@ -76,6 +54,59 @@ function ListCard({
     </ListCardWrapper>
   );
 }
+
+const NormalProducts = ({ styleCode, productName, imgUrl }) => {
+  return (
+    <Link to={`/product/detail/${styleCode}`}>
+      <div className="imgWrapper">
+        <img alt={productName} src={imgUrl} />
+      </div>
+    </Link>
+  );
+};
+
+const MemberProducts = ({ mouse, setMouse, styleCode, productName, imgUrl }) => {
+  return (
+    <div
+      className="imgWrapperForMember"
+      onMouseEnter={() => setMouse(true)}
+      onMouseLeave={() => setMouse(false)}
+    >
+      <Link to={`/product/detail/${styleCode}`}>
+        <div className="white" style={mouse ? { display: 'block' } : { display: 'none' }}>
+          <div className="comment">
+            나이키 멤버만
+            <br /> 구매가능한 제품입니다
+          </div>
+        </div>
+        <button>
+          <IoIosLock className="icon" />
+        </button>
+        <img alt={productName} src={imgUrl} />
+      </Link>
+    </div>
+  );
+};
+
+const Price = ({ normalPrice }) => {
+  return (
+    <div className="detailRight">
+      <div>{parseInt(normalPrice).toLocaleString()} 원</div>
+    </div>
+  );
+};
+
+const SaledPrice = ({ saleRate, salePrice, normalPrice }) => {
+  return (
+    <div className="detailRight">
+      <div className="row1">
+        <span className="saleRate">{saleRate}% </span>
+        {parseInt(salePrice).toLocaleString()} 원
+      </div>
+      <div className="row2">{parseInt(normalPrice).toLocaleString()} 원</div>
+    </div>
+  );
+};
 
 const ListCardWrapper = styled.div`
   a {

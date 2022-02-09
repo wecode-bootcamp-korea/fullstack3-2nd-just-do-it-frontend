@@ -1,9 +1,10 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import Footer from '../../components/Footer';
 import Top from '../../components/Top';
 import TopNav from '../../components/TopNav';
-import { REDIRECT_URI, REST_API_KEY } from '../../config';
+import Footer from '../../components/Footer';
 import { RiKakaoTalkFill } from 'react-icons/ri';
+import { REDIRECT_URI, REST_API_KEY } from '../../config';
 
 function SignUp() {
   const kauthUrl = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;

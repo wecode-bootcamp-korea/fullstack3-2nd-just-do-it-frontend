@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useRef, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { SiNike } from 'react-icons/si';
 import { FiSearch, FiHeart, FiShoppingBag, FiMenu } from 'react-icons/fi';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useEffect, useRef, useState } from 'react';
 import MenModal from './Modals/MenModal';
 import WomenModal from './Modals/WomenModal';
 import KidModal from './Modals/KidModal';
@@ -75,15 +75,15 @@ function TopNav() {
               <Link to="/snkrs">
                 <div>SNKRS</div>
               </Link>
-              <a href="/list?genderId=1">
+              <Link to="/list?genderId=1">
                 <div onMouseEnter={() => setMenModalOn(true)}>MEN</div>
-              </a>
-              <a href="/list?genderId=2">
+              </Link>
+              <Link to="/list?genderId=2">
                 <div onMouseOver={() => setWomenModalOn(true)}>WOMEN</div>
-              </a>
-              <a href="/list?genderId=3">
+              </Link>
+              <Link to="/list?genderId=3">
                 <div onMouseOver={() => setKidModalOn(true)}>KID</div>
-              </a>
+              </Link>
               <div onMouseOver={() => setSaleModalOn(true)}>SALES</div>
             </div>
           </NavCenter>
@@ -102,11 +102,11 @@ function TopNav() {
             <button>
               <FiHeart className="icon" id="likeBtn" />
             </button>
-            <a href="/cart">
+            <Link to="/cart">
               <button>
                 <FiShoppingBag className="icon" id="iconBag" style={{ cursor: 'pointer' }} />
               </button>
-            </a>
+            </Link>
             <button className="iconMobile">
               <FiMenu />
             </button>

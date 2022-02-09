@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 function KidModal({ setKidModalOn }) {
@@ -21,9 +22,9 @@ function KidModal({ setKidModalOn }) {
             </ul>
           </ul>
           <ul className="modalCol">
-            <a href="/list?genderId=3&categoryId=1">
+            <Link to="/list?genderId=3&categoryId=1">
               <li className="cateTitle">신발</li>
-            </a>
+            </Link>
             <ul className="cateList">
               <li>베이비(160mm 이하)</li>
               <li>리틀키즈(165-220mm)</li>
@@ -36,9 +37,9 @@ function KidModal({ setKidModalOn }) {
             </ul>
           </ul>
           <ul className="modalCol">
-            <a href="/list?genderId=3&categoryId=2">
+            <Link to="/list?genderId=3&categoryId=2">
               <li className="cateTitle">의류</li>
-            </a>
+            </Link>
             <ul className="cateList">
               <li>베이비 (0-4세)</li>
               <li>리틀키즈 (4-7세)</li>
@@ -52,9 +53,9 @@ function KidModal({ setKidModalOn }) {
               <li>가방 & 모자 & 용품</li>
             </ul>
             <br />
-            <a href="/list?genderId=3&categoryId=3">
+            <Link to="/list?genderId=3&categoryId=3">
               <li className="cateTitle">용품</li>
-            </a>
+            </Link>
             <ul className="cateList">
               <li>가방</li>
               <li>모자</li>

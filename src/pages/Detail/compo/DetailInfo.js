@@ -542,6 +542,7 @@ export default function DetailInfo({ data }) {
         quantity: quantity,
         style_code: data.style_code,
         size: size,
+        is_member: data.is_member,
       }),
     })
       .then(res => res.json())

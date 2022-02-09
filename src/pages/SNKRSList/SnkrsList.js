@@ -1,21 +1,22 @@
-import Footer from '../../components/Footer';
-import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { GET_SNKRS_LIST_API } from '../../config';
+import styled from 'styled-components';
 import SnkrsTop from './SnkrsTop';
+import Footer from '../../components/Footer';
+import { GET_SNKRS_LIST_API } from '../../config';
+import { Link } from 'react-router-dom';
 
 function SnkrsList() {
   const [grid, setGrid] = useState(true);
 
-  const [listData, setListData] = useState([]);
+  const [snkrsList, setSnkrsList] = useState([]);
 
   useEffect(() => {
     axios({
       url: GET_SNKRS_LIST_API,
       method: 'GET',
     }).then(response => {
-      setListData(response.data.list);
+      setSnkrsList(response.data.list);
     });
   }, []);
 
@@ -24,10 +25,10 @@ function SnkrsList() {
       <SnkrsTop setGrid={setGrid} grid={grid} />
       <ListBody>
         <div className={grid ? 'listCard' : 'changedListCard'}>
-          {listData.map((e, i) => {
+          {snkrsList.map((e, i) => {
             return (
               <div className="cardWrapper" key={i}>
-                <a href={`/snkrs/detail/${e.style_code}`}>
+                <Link to={`/snkrs/detail/${e.style_code}`}>
                   <div className="imgWrapper">
                     <img src={e.imgUrl} alt={e.snkrsName} />
                   </div>
@@ -35,7 +36,7 @@ function SnkrsList() {
                     {e.is_open ? <div className="draw">Draw!</div> : <div>Commig soon</div>}
                     <div className="itemName">{e.snkrsName}</div>
                   </div>
-                </a>
+                </Link>
               </div>
             );
           })}

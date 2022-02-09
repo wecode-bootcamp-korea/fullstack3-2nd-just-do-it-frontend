@@ -1,5 +1,5 @@
-import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 function SnkrsListCard({ snkrsName, imgUrl, isOpen, key, setBtnActive, grid }) {
   return (
