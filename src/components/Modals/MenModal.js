@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 function ManModal({ setMenModalOn }) {
@@ -24,13 +25,13 @@ function ManModal({ setMenModalOn }) {
             </ul>
           </ul>
           <ul className="modalCol">
-            <a href="/list?genderId=1&categoryId=1">
+            <Link to="/list?genderId=1&categoryId=1">
               <li className="cateTitle">신발</li>
-            </a>
+            </Link>
             <ul className="cateList">
-              <a href="/list?genderId=1&categoryId=1">
+              <Link to="/list?genderId=1&categoryId=1">
                 <li>신발 전체</li>
-              </a>
+              </Link>
               <li>라이프스타일</li>
               <li>러닝</li>
               <li>트레이닝 & 짐</li>
@@ -44,13 +45,13 @@ function ManModal({ setMenModalOn }) {
             </ul>
           </ul>
           <ul className="modalCol">
-            <a href="/list?genderId=1&categoryId=2">
+            <Link to="/list?genderId=1&categoryId=2">
               <li className="cateTitle">의류</li>
-            </a>
+            </Link>
             <ul className="cateList">
-              <a href="/list?genderId=1&categoryId=2">
+              <Link to="/list?genderId=1&categoryId=2">
                 <li>의류 전체</li>
-              </a>
+              </Link>
               <li>후디 & 크루</li>
               <li>팬츠 & 타이츠</li>
               <li>재킷 & 베스트</li>
@@ -61,9 +62,9 @@ function ManModal({ setMenModalOn }) {
               <li>셋업</li>
             </ul>
             <br />
-            <a href="/list?genderId=1&categoryId=2">
+            <Link to="/list?genderId=1&categoryId=2">
               <li className="cateTitle">용품</li>
-            </a>
+            </Link>
             <ul className="cateList">
               <li>모자 & 헤드밴드</li>
               <li>가방</li>

@@ -8,7 +8,7 @@ const REST_API_KEY = '431f22e98bdcf940e03ed5683279604a';
 const REDIRECT_URI = `${BASE_FRONT_URL}/oauth`;
 const CLIENT_SECRET = 'kRvKEnDviwALGL0NSYG0rN9jhpXCmHoh';
 
-const POST_SIGN_IN_API = `${BASE_URL}/user/signin`;
+const GET_SIGN_IN_API = `${BASE_URL}/user/signin`;
 const POST_MEMBER_API = `${BASE_URL}/user/member`;
 
 export {
@@ -17,6 +17,6 @@ export {
   REST_API_KEY,
   REDIRECT_URI,
   CLIENT_SECRET,
-  POST_SIGN_IN_API,
+  GET_SIGN_IN_API,
   POST_MEMBER_API,
 };

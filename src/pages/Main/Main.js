@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import Footer from '../../components/Footer';
 import Top from '../../components/Top';
 import TopNav from '../../components/TopNav';
+import Footer from '../../components/Footer';
 
 function Main() {
   return (

@@ -1,11 +1,10 @@
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import SignIn from '../Users/SignIn';
 import { FaShoppingCart, FaMapMarker } from 'react-icons/fa';
 import { BsFillGridFill, BsFillGrid3X3GapFill } from 'react-icons/bs';
 import { IoChevronBackOutline } from 'react-icons/io5';
-import { Link } from 'react-router-dom';
-
-import styled from 'styled-components';
-import { useState } from 'react';
-import SignIn from '../Login/SignIn';
 
 function SnkrsTop({ grid, setGrid }) {
   const [modal, setModal] = useState(false);

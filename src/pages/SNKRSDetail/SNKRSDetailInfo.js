@@ -4,7 +4,7 @@ import axios from 'axios';
 import { GrClose } from 'react-icons/gr';
 import { useParams } from 'react-router-dom';
 export default function SNKRSDetailInfo() {
-  const [data, setData] = useState('');
+  const [snkrsDetail, setSnkrsDetail] = useState('');
   const [userData, setUserData] = useState();
   const [size, setSize] = useState(0);
   const [openModal, setOpenModal] = useState(false);
@@ -17,7 +17,7 @@ export default function SNKRSDetailInfo() {
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_BASE_URL}/snkrs/detail/${params.styleCode}`)
-      .then(res => setData(res.data.data));
+      .then(res => setSnkrsDetail(res.data.data));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -25,20 +25,20 @@ export default function SNKRSDetailInfo() {
   const draw = () => {
     if (size === 0 || size === '사이즈 선택') {
       return alert('신발 사이즈를 선택해주세요!');
-    } else if (!data.is_open) {
+    } else if (!snkrsDetail.is_open) {
       return alert('Draw 시간이 아닙니다!');
-    } else if (size !== '사이즈 선택' && data.is_open) {
+    } else if (size !== '사이즈 선택' && snkrsDetail.is_open) {
       fetch(`${process.env.REACT_APP_BASE_URL}/snkrs`, {
         method: 'POST',
         mode: 'cors',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           user_id: userId,
-          style_code: `${data.style_code}`,
+          style_code: `${snkrsDetail.style_code}`,
           size: `${size}`,
         }),
       }).then(res => {
-        if (res.status === 500) {
+        if (res.status === 409) {
           alert('이미 추첨을 하셨습니다');
         } else {
           alert('응모가 완료되었습니다');
@@ -127,14 +127,16 @@ export default function SNKRSDetailInfo() {
         </ModalBackground>
       ) : null}
 
-      <SNKRSDetailInfosTitle>{data.name}</SNKRSDetailInfosTitle>
-      <SNKRSDetailInfosPrice>{parseInt(data.price).toLocaleString()} 원</SNKRSDetailInfosPrice>
+      <SNKRSDetailInfosTitle>{snkrsDetail.name}</SNKRSDetailInfosTitle>
+      <SNKRSDetailInfosPrice>
+        {parseInt(snkrsDetail.price).toLocaleString()} 원
+      </SNKRSDetailInfosPrice>
       <div className="desc">
         모든 복장을 자기표현의 기회로 삼으세요!
         <br />
         <br />
         <span>
-          {`이번 ${data.name}는 농구 아이콘을 강조해 오랜 시간을 거쳐 검증된 디자인 그
+          {`이번 ${snkrsDetail.name}는 농구 아이콘을 강조해 오랜 시간을 거쳐 검증된 디자인 그
         이상을 보여줍니다!`}
         </span>
         <br />
@@ -151,8 +153,8 @@ export default function SNKRSDetailInfo() {
       <SizeSelection>
         <select onChange={pickValue}>
           <option value="사이즈 선택">사이즈 선택</option>
-          {data.info &&
-            data.info.map((obj, index) => {
+          {snkrsDetail.info &&
+            snkrsDetail.info.map((obj, index) => {
               return (
                 <option key={index} value={obj.size}>
                   {obj.size}
@@ -161,7 +163,7 @@ export default function SNKRSDetailInfo() {
             })}
         </select>
       </SizeSelection>
-      {data.is_open === 0 ? (
+      {snkrsDetail.is_open === 0 ? (
         <button onClick={() => draw()} disabled={true} style={{ opacity: 0.5 }}>
           Comming SOON!
         </button>

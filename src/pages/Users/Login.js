@@ -1,7 +1,7 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { POST_SIGN_IN_API } from '../../config';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { GET_SIGN_IN_API } from '../../config';
 
 function Login() {
   const [email, setEmail] = useState();
@@ -18,14 +18,15 @@ function Login() {
     // 사용자 정보 변수에 저장
     setEmail(data.kakao_account.email);
     setName(data.properties.nickname);
-    alert('반갑습니다!');
+    alert(`${data.properties.nickname}님 반갑습니다!`);
   };
 
   useEffect(() => {
     getLocal();
   }, []);
+
   axios
-    .post(POST_SIGN_IN_API, {
+    .post(GET_SIGN_IN_API, {
       name: name,
       email: email,
     })

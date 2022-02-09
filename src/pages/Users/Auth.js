@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import qs from 'qs';
-import { useNavigate } from 'react-router-dom';
 import { CLIENT_SECRET, REDIRECT_URI, REST_API_KEY } from '../../config';
 
 const Auth = () => {

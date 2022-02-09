@@ -1,18 +1,18 @@
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import axios from 'axios';
 import styled from 'styled-components';
-import ListCard from './ListCard';
 import Top from '../../components/Top';
 import TopNav from '../../components/TopNav';
-import Footer from '../../components/Footer';
 import ListTop from './ListTop';
 import ListFilterCard from './ListFilterCard';
-import { useEffect, useState } from 'react';
+import ListCard from './ListCard';
+import Footer from '../../components/Footer';
 import { GET_LIST_API } from '../../config';
-import axios from 'axios';
-import { useLocation } from 'react-router-dom';
 
 function List() {
   const [filter, setFilter] = useState(true);
-  const [listData, setListData] = useState([]);
+  const [productList, setProductList] = useState([]);
   const [sortMethod, setSortMethod] = useState(0);
 
   // const params = useParams();
@@ -32,7 +32,7 @@ function List() {
       url: URL,
       method: 'GET',
     }).then(response => {
-      setListData(response.data.list);
+      setProductList(response.data.list);
     });
   }, [URL]);
 
@@ -51,7 +51,7 @@ function List() {
         <ListBody>
           <ListFilterCard filter={filter} FILTER_URL={FILTER_URL} changeParams={changeParams} />
           <ListCardWrapper>
-            {listData.map((element, index) => {
+            {productList.map((element, index) => {
               return (
                 <ListCard
                   key={index}

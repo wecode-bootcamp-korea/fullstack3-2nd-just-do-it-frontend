@@ -1,8 +1,8 @@
+import { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { SiNike } from 'react-icons/si';
 import { RiKakaoTalkFill } from 'react-icons/ri';
-import { Link } from 'react-router-dom';
-import { useEffect, useRef } from 'react';
 import { REDIRECT_URI, REST_API_KEY } from '../../config';
 
 function SignIn({ modal, setModal }) {
@@ -46,7 +46,7 @@ function SignIn({ modal, setModal }) {
             <div>아이디/비밀번호 찾기</div>
           </div>
           <button className="normal">로그인</button>
-          <a href={kauthUrl}>
+          <a href={kauthUrl} replace={true}>
             <button className="kakao">
               <RiKakaoTalkFill className="kakaoIcon" />
               카카오톡 로그인
