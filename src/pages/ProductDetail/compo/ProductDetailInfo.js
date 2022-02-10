@@ -421,13 +421,13 @@ export default function DetailInfo({ data }) {
 
   // 특정 사용자의 장바구니 목록 불러오기
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_BASE_URL}/cart/list`, {
-      method: 'POST',
+    fetch(`${process.env.REACT_APP_BASE_URL}/cart`, {
+      method: 'GET',
       mode: 'cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        user_id: userId,
-      }),
+      headers: {
+        'Content-Type': 'application/json',
+        token: localStorage.getItem('token'),
+      },
     })
       .then(res => res.json())
       .then(res => {
@@ -442,7 +442,10 @@ export default function DetailInfo({ data }) {
     fetch(`${process.env.REACT_APP_BASE_URL}/user/review`, {
       method: 'POST',
       mode: 'cors',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        token: localStorage.getItem('token'),
+      },
       body: JSON.stringify({
         user_id: userId,
         styleCode: data.style_code,
@@ -471,7 +474,7 @@ export default function DetailInfo({ data }) {
     fetch(`${process.env.REACT_APP_BASE_URL}/user/reviewAverage`, {
       method: 'POST',
       mode: 'cors',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', token: localStorage.getItem('token') },
       body: JSON.stringify({
         styleCode: data.style_code,
       }),
@@ -490,6 +493,7 @@ export default function DetailInfo({ data }) {
       mode: 'cors',
       headers: {
         'Content-Type': 'application/json',
+        token: localStorage.getItem('token'),
       },
       body: JSON.stringify({
         user_id: userId,
@@ -507,6 +511,7 @@ export default function DetailInfo({ data }) {
       mode: 'cors',
       headers: {
         'Content-Type': 'application/json',
+        token: localStorage.getItem('token'),
       },
       body: JSON.stringify({
         user_id: userId,
@@ -536,8 +541,9 @@ export default function DetailInfo({ data }) {
     fetch(`${process.env.REACT_APP_BASE_URL}/cart`, {
       method: 'POST',
       mode: 'cors',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', token: localStorage.getItem('token') },
       body: JSON.stringify({
+        is_member: data.is_member,
         user_id: userId,
         quantity: quantity,
         style_code: data.style_code,
@@ -563,6 +569,8 @@ export default function DetailInfo({ data }) {
       });
     return result;
   };
+
+  // console.log(userId);
   return (
     <DetailInfos>
       <DetailInfoTitleTop>

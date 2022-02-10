@@ -1,5 +1,5 @@
-import DetailInfo from './compo/DetailInfo';
-import DetailImg from './compo/DetailImg';
+import DetailInfo from './compo/ProductDetailInfo';
+import DetailImg from './compo/ProductDetailImg';
 import styled from 'styled-components';
 import Top from '../../components/Top';
 import TopNav from '../../components/TopNav';

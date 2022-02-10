@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Detail from './pages/Detail/Detail';
-import List from './pages/ProductList/List';
-import SignUp from './pages/Users/SignUp';
+import Detail from './pages/ProductDetail/ProductDetail';
+import List from './pages/List/List';
+import SignUp from './pages/Login/SignUp';
 import SnkrsList from './pages/SNKRSList/SnkrsList';
 import SNKRSDetail from './pages/SNKRSDetail/SNKRSDetail';
 import Auth from './pages/Users/Auth';
