@@ -46,7 +46,7 @@ function SignIn({ modal, setModal }) {
             <div>아이디/비밀번호 찾기</div>
           </div>
           <button className="normal">로그인</button>
-          <a href={kauthUrl} replace={true}>
+          <a href={kauthUrl}>
             <button className="kakao">
               <RiKakaoTalkFill className="kakaoIcon" />
               카카오톡 로그인
