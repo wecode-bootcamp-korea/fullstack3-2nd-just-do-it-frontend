@@ -6,7 +6,6 @@ import { CLIENT_SECRET, REDIRECT_URI, REST_API_KEY, GET_SIGN_IN_API } from '../.
 
 const Auth = () => {
   const navigate = useNavigate();
-  const [token, setToken] = useState();
 
   // calllback으로 받은 인가코드
   const code = new URL(window.location.href).searchParams.get('code');
@@ -28,8 +27,7 @@ const Auth = () => {
           axios
             .get(GET_SIGN_IN_API, { headers: { accessToken: res.data.access_token } })
             .then(res => {
-              setToken(res.data.token);
-              localStorage.setItem('token', token);
+              localStorage.setItem('token', res.data.token);
             })
         )
         .then(alert(`환영합니다!`))

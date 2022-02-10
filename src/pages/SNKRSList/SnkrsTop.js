@@ -8,7 +8,7 @@ import { IoChevronBackOutline } from 'react-icons/io5';
 
 function SnkrsTop({ grid, setGrid }) {
   const [modal, setModal] = useState(false);
-  const user_id = localStorage.getItem('token');
+  const token = localStorage.getItem('token');
 
   const logOut = () => {
     localStorage.removeItem('token');
@@ -31,7 +31,7 @@ function SnkrsTop({ grid, setGrid }) {
           <div className="rightRight">
             <Link to="/signup">회원가입</Link>
             <div className="center">/</div>
-            {user_id ? (
+            {token ? (
               <div onClick={() => logOut()}>로그아웃</div>
             ) : (
               <div onClick={() => setModal(true)}>로그인</div>
