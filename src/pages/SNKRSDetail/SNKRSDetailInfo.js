@@ -11,7 +11,7 @@ export default function SNKRSDetailInfo() {
 
   const params = useParams();
 
-  const userId = localStorage.getItem('token');
+  const token = localStorage.getItem('token');
 
   // 페이지 렌더링 데이터
   useEffect(() => {
@@ -31,9 +31,8 @@ export default function SNKRSDetailInfo() {
       fetch(`${process.env.REACT_APP_BASE_URL}/snkrs`, {
         method: 'POST',
         mode: 'cors',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', user_id: token },
         body: JSON.stringify({
-          user_id: userId,
           style_code: `${snkrsDetail.style_code}`,
           size: `${size}`,
         }),
@@ -59,8 +58,8 @@ export default function SNKRSDetailInfo() {
   useEffect(() => {
     axios
       .put(`${process.env.REACT_APP_BASE_URL}/snkrs`, {
-        user_id: userId,
-        style_code: params.styleCode,
+        headers: { user_id: token },
+        body: { style_code: params.styleCode },
       })
       .then(res => setUserData(res.data.data));
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -173,7 +172,7 @@ export default function SNKRSDetailInfo() {
         </button>
       )}
 
-      {userId ? (
+      {token ? (
         <button onClick={() => setOpenModal(true)}>추첨 확인</button>
       ) : (
         <button onClick={() => setOpenModal(false)} style={{ opacity: 0.5 }}>

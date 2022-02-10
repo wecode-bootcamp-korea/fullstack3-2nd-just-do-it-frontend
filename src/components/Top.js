@@ -9,12 +9,14 @@ import { POST_MEMBER_API } from '../config';
 
 function Top() {
   const [modal, setModal] = useState(false);
-  const user_id = localStorage.getItem('token');
+  const token = localStorage.getItem('token');
 
   const makeMember = () => {
     axios
-      .post(POST_MEMBER_API, {
-        user_id: user_id,
+      .get(POST_MEMBER_API, {
+        headers: {
+          user_id: token,
+        },
       })
       .then(() => {
         alert('프리미엄 회원이 되신 것을 축하드립니다!');
@@ -43,8 +45,7 @@ function Top() {
             <li>멤버 가입</li>
           </Link>
           <li onClick={makeMember}>프리미엄 멤버 가입</li>
-          {/* {user_id ? <li>{name}님</li> : <li onClick={() => setModal(true)}>로그인</li>} */}
-          {user_id ? (
+          {token ? (
             <li onClick={() => logOut()}>로그아웃</li>
           ) : (
             <li onClick={() => setModal(true)}>로그인</li>
